@@ -18,6 +18,8 @@ public class UserDetailsImpl implements UserDetails {
     private String email;
     @JsonIgnore
     private String password;
+    // the collection can hold objects of any class that extends (or implements)
+    // the 'GrantedAuthority' interface, or objects of the 'GrantedAuthority' itself
     private Collection<? extends GrantedAuthority> authorities;
     public UserDetailsImpl(Long id, String username, String email,
                            String password, Collection<? extends GrantedAuthority> authorities) {
@@ -74,8 +76,8 @@ public class UserDetailsImpl implements UserDetails {
     }
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
+        if (this == o) { // this refers to the current instance of the `UserDetailsImpl` class
+            return true; // same instance
         }
         if (o == null || getClass() != o.getClass())
             return false;

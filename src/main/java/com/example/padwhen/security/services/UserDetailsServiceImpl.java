@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+// When the annotation method is called, a transaction will be initiated, and the method
+// will execute within that transaction context.
 import org.springframework.transaction.annotation.Transactional;
 
 @Service

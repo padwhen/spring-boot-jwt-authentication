@@ -20,7 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableMethodSecurity
+@EnableMethodSecurity // use this to secure methods in our apis with @preauthorize annotation easily
 public class WebSecurityConfig {
     @Autowired
     UserDetailsServiceImpl userDetailsService;
