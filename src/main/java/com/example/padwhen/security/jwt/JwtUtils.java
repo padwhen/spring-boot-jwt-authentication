@@ -37,8 +37,12 @@ public class JwtUtils {
     }
     // Extracts the username from the JWT token
     public String getUserNameFromJwtToken(String token) {
-        return Jwts.parserBuilder().setSigningKey(key()).build()
-                .parseClaimsJwt(token).getBody().getSubject();
+        return Jwts.parserBuilder()
+                .setSigningKey(key())
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
     // Validates the JWT token.
     public boolean validateJwtToken(String authToken) {
