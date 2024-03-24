@@ -24,12 +24,16 @@ public class JwtUtils {
     // Generates a JWT token using the user's authentication details
     public String generateJwtToken(Authentication authentication) {
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-        return Jwts.builder()
-                .setSubject((userPrincipal.getUsername()))
-                .setIssuedAt(new Date())
-                .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-                .signWith(key(), SignatureAlgorithm.HS256)
-                .compact();
+        if (userPrincipal != null) {
+            return Jwts.builder()
+                    .setSubject((userPrincipal.getUsername()))
+                    .setIssuedAt(new Date())
+                    .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+                    .signWith(key(), SignatureAlgorithm.HS256)
+                    .compact();
+        } else {
+            return null;
+        }
     }
     // Generates a cryptographic key from the JWT secret
     private Key key() {
