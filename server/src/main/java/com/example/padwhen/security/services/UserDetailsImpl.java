@@ -23,6 +23,9 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
     public UserDetailsImpl(Long id, String username, String email,
                            String password, Collection<? extends GrantedAuthority> authorities) {
+        if (id == null || username == null || email == null || password == null || authorities == null) {
+            throw new IllegalArgumentException("All arguments must be non-null");
+        }
         this.id = id;
         this.username = username;
         this.email = email;

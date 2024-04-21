@@ -44,6 +44,9 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getEmail() {
         return email;
     }
